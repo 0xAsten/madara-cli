@@ -7,6 +7,9 @@ use structopt::StructOpt;
 #[derive(Debug, StructOpt)]
 #[structopt(name = "madara_cli", about = "CLI for Madara node.")]
 struct Opt {
+    #[structopt(long, default_value = "http://0.0.0.0:9944")]
+    rpc_url: String,
+
     #[structopt(short = "m", long = "method")]
     method: String,
 
@@ -18,7 +21,7 @@ struct Opt {
 async fn main() -> Result<(), Error> {
     let opt = Opt::from_args();
 
-    let rpc_url = "http://0.0.0.0:9944";
+    let rpc_url = opt.rpc_url;
 
     let payload = json!({
         "jsonrpc": "2.0",
@@ -26,8 +29,6 @@ async fn main() -> Result<(), Error> {
         "params": serde_json::from_str::<Vec<String>>(&opt.params.unwrap_or("[]".to_string())).unwrap_or(vec![]),
         "id": "1",
     });
-
-    println!("Payload: {:?}", payload);
 
     let client = reqwest::Client::new();
     let response: HashMap<String, Value> = client
@@ -38,8 +39,6 @@ async fn main() -> Result<(), Error> {
         .await?
         .json()
         .await?;
-
-    println!("Response: {:?}", response);
 
     if response.contains_key("error") {
         println!("Error: {:?}", response["error"]);
