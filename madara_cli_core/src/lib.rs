@@ -17,6 +17,18 @@ pub enum Command {
         block_reference: String,
     },
 
+    #[structopt(name = "get-block-with-tx-hashes")]
+    StarknetGetBlockWithTxHashes {
+        #[structopt(long, default_value = "latest")]
+        block_reference: String,
+    },
+
+    #[structopt(name = "get-block-with-txs")]
+    StarknetGetBlockWithTxs {
+        #[structopt(long, default_value = "latest")]
+        block_reference: String,
+    },
+
     #[structopt(name = "call-contract")]
     StarknetCall {
         #[structopt(long)]
