@@ -105,6 +105,14 @@ pub enum Command {
     #[structopt(name = "get-events")]
     StarknetGetEvents(GetEvents),
 
+    #[structopt(name = "get-nonce")]
+    StarknetGetNonce {
+        #[structopt(long, default_value = "latest")]
+        block_reference: String,
+        #[structopt(long)]
+        address: String,
+    },
+
     #[structopt(name = "call-contract")]
     StarknetCall {
         #[structopt(long)]
