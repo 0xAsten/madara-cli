@@ -23,7 +23,7 @@ pub struct StarknetEstimateFee {
     )]
     pub sender_address: String,
 
-    #[structopt(short, long)]
+    #[structopt(short, long, use_delimiter = true)]
     pub calldata: Vec<String>,
 
     #[structopt(short, long, default_value = "latest")]
