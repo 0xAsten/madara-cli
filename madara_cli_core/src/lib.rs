@@ -146,6 +146,12 @@ pub enum Command {
         tx_hash: String,
     },
 
+    #[structopt(name = "get-tx-receipt")]
+    StarknetGetTransactionReceipt {
+        #[structopt(long)]
+        tx_hash: String,
+    },
+
     #[structopt(name = "call-contract")]
     StarknetCall {
         #[structopt(long)]
