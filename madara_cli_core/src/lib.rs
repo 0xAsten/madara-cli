@@ -29,8 +29,16 @@ pub enum Command {
         block_reference: String,
     },
 
-    #[structopt(name = "get-class-hash")]
+    #[structopt(name = "get-class")]
     StarknetGetClass {
+        #[structopt(long, default_value = "latest")]
+        block_reference: String,
+        #[structopt(long)]
+        class_hash: String,
+    },
+
+    #[structopt(name = "get-class-at")]
+    StarknetGetClassAt {
         #[structopt(long, default_value = "latest")]
         block_reference: String,
         #[structopt(long)]

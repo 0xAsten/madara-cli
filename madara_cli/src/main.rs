@@ -63,11 +63,22 @@ async fn main() -> Result<(), Error> {
         }
         Command::StarknetGetClass {
             block_reference,
-            address,
+            class_hash,
         } => {
             payload = json!({
                 "jsonrpc": "2.0",
                 "method": "starknet_getClass",
+                "params": [block_reference, class_hash],
+                "id": "1",
+            });
+        }
+        Command::StarknetGetClassAt {
+            block_reference,
+            address,
+        } => {
+            payload = json!({
+                "jsonrpc": "2.0",
+                "method": "starknet_getClassAt",
                 "params": [block_reference, address],
                 "id": "1",
             });
