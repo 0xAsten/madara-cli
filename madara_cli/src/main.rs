@@ -164,6 +164,17 @@ async fn main() -> Result<(), Error> {
                 "id": "1",
             });
         }
+        Command::StarknetGetTransactionByBlockIdAndIndex {
+            block_reference,
+            index,
+        } => {
+            payload = json!({
+                "jsonrpc": "2.0",
+                "method": "starknet_getTransactionByBlockIdAndIndex",
+                "params": [block_reference, index],
+                "id": "1",
+            });
+        }
         Command::StarknetCall {
             contract_address,
             entry_point_selector,

@@ -131,6 +131,15 @@ pub enum Command {
         block_reference: String,
     },
 
+    #[structopt(name = "get-tx-by-block-id-and-index")]
+    StarknetGetTransactionByBlockIdAndIndex {
+        #[structopt(long, default_value = "latest")]
+        block_reference: String,
+
+        #[structopt(long)]
+        index: u32,
+    },
+
     #[structopt(name = "call-contract")]
     StarknetCall {
         #[structopt(long)]
