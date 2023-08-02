@@ -14,7 +14,7 @@ pub struct StarknetEstimateFee {
     #[structopt(short, long, default_value = "0x0")]
     pub nonce: String,
 
-    #[structopt(short, long)]
+    #[structopt(short, long, use_delimiter = true)]
     pub signature: Vec<String>,
 
     #[structopt(
@@ -43,6 +43,27 @@ pub struct GetEvents {
 
     #[structopt(long, default_value = "10")]
     pub chunk_size: u64,
+}
+
+#[derive(StructOpt, Debug)]
+pub struct AddInvokeTransactionOpts {
+    #[structopt(long)]
+    pub max_fee: String,
+
+    #[structopt(long, default_value = "0x1")]
+    pub version: String,
+
+    #[structopt(long, default_value = "0x0")]
+    pub nonce: String,
+
+    #[structopt(long, use_delimiter = true)]
+    pub signature: Vec<String>,
+
+    #[structopt(long)]
+    pub sender_address: String,
+
+    #[structopt(long, use_delimiter = true)]
+    pub calldata: Vec<String>,
 }
 
 #[derive(Debug, StructOpt)]
@@ -162,13 +183,19 @@ pub enum Command {
     StarknetCall {
         #[structopt(long)]
         contract_address: String,
+
         #[structopt(long)]
         entry_point_selector: String,
-        #[structopt(long)]
+
+        #[structopt(long, use_delimiter = true)]
         calldata: Vec<String>,
+
         #[structopt(long, default_value = "latest")]
         block_reference: String,
     },
+
+    #[structopt(name = "invoke-tx")]
+    StarknetAddInvokeTransaction(AddInvokeTransactionOpts),
 }
 
 #[derive(Debug, StructOpt)]

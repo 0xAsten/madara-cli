@@ -226,6 +226,24 @@ async fn main() -> Result<(), Error> {
                 "id": "1",
             });
         }
+        Command::StarknetAddInvokeTransaction(opts) => {
+            payload = json!({
+                "jsonrpc": "2.0",
+                "method": "starknet_addInvokeTransaction",
+                "params": {
+                    "invoke_transaction": {
+                        "type": "INVOKE",
+                        "max_fee": opts.max_fee,
+                        "version": opts.version,
+                        "nonce": opts.nonce,
+                        "signature": opts.signature,
+                        "sender_address": opts.sender_address,
+                        "calldata": opts.calldata,
+                    }
+                },
+                "id": "1",
+            });
+        }
     }
 
     handle_rpc_request(&rpc_url, &payload).await?;
