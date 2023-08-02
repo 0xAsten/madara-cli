@@ -13,10 +13,26 @@ async fn main() -> Result<(), Error> {
     let payload;
 
     match opt.command {
+        Command::StarknetChainId => {
+            payload = json!({
+                "jsonrpc": "2.0",
+                "method": "starknet_chainId",
+                "params": [],
+                "id": "1",
+            });
+        }
         Command::StarknetBlockNumber => {
             payload = json!({
                 "jsonrpc": "2.0",
                 "method": "starknet_blockNumber",
+                "params": [],
+                "id": "1",
+            });
+        }
+        Command::StarknetBlockHashAndNumber => {
+            payload = json!({
+                "jsonrpc": "2.0",
+                "method": "starknet_blockHashAndNumber",
                 "params": [],
                 "id": "1",
             });

@@ -2,8 +2,15 @@ use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
 pub enum Command {
+    #[structopt(name = "get-chainid")]
+    StarknetChainId,
+
     #[structopt(name = "get-blocknumber")]
     StarknetBlockNumber,
+
+    #[structopt(name = "get-block-hash-and-number")]
+    StarknetBlockHashAndNumber,
+
     #[structopt(name = "call-contract")]
     StarknetCall {
         #[structopt(long)]
