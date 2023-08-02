@@ -119,6 +119,18 @@ pub enum Command {
         block_reference: String,
     },
 
+    #[structopt(name = "get-storage-at")]
+    StarknetGetStorageAt {
+        #[structopt(long)]
+        address: String,
+
+        #[structopt(long)]
+        key: String,
+
+        #[structopt(long, default_value = "latest")]
+        block_reference: String,
+    },
+
     #[structopt(name = "call-contract")]
     StarknetCall {
         #[structopt(long)]
