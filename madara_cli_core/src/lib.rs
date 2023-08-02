@@ -155,6 +155,9 @@ pub enum Command {
     #[structopt(name = "get-pending-txs")]
     StarknetPendingTransactions,
 
+    #[structopt(name = "get-syncing")]
+    StarknetSyncing,
+
     #[structopt(name = "call-contract")]
     StarknetCall {
         #[structopt(long)]
