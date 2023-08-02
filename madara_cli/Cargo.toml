@@ -1,0 +1,13 @@
+[package]
+name = "madara_cli"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+madara_cli_core = { path = "../madara_cli_core" }
+
+reqwest = { version = "0.11", features = ["json"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1", features = ["full"] }
+structopt = "0.3"

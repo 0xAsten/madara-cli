@@ -1,21 +1,9 @@
-use std::{collections::HashMap, vec};
-
 use reqwest::Error;
 use serde_json::{json, Value};
+use std::{collections::HashMap, vec};
 use structopt::StructOpt;
 
-#[derive(Debug, StructOpt)]
-#[structopt(name = "madara_cli", about = "CLI for Madara node.")]
-struct Opt {
-    #[structopt(long, default_value = "http://0.0.0.0:9944")]
-    rpc_url: String,
-
-    #[structopt(short = "m", long = "method")]
-    method: String,
-
-    #[structopt(short = "p", long = "params")]
-    params: Option<String>,
-}
+use madara_cli_core::Opt;
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {

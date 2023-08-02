@@ -438,14 +438,22 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b06a4cde4c0f271a446782e3eff8de789548ce57dbc8eca9292c27f4a42004b4"
 
 [[package]]
-name = "madara-cli"
+name = "madara_cli"
 version = "0.1.0"
 dependencies = [
+ "madara_cli_core",
  "reqwest",
  "serde",
  "serde_json",
  "structopt",
  "tokio",
+]
+
+[[package]]
+name = "madara_cli_core"
+version = "0.1.0"
+dependencies = [
+ "structopt",
 ]
 
 [[package]]
