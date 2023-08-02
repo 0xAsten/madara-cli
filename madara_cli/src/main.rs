@@ -61,6 +61,17 @@ async fn main() -> Result<(), Error> {
                 "id": "1",
             });
         }
+        Command::StarknetGetClass {
+            block_reference,
+            address,
+        } => {
+            payload = json!({
+                "jsonrpc": "2.0",
+                "method": "starknet_getClass",
+                "params": [block_reference, address],
+                "id": "1",
+            });
+        }
         Command::StarknetCall {
             contract_address,
             entry_point_selector,
@@ -99,9 +110,9 @@ async fn handle_rpc_request(rpc_url: &str, payload: &Value) -> Result<(), Error>
         .await?;
 
     if response.contains_key("error") {
-        println!("Error: {:?}", response["error"]);
+        println!("Error: \n {:#?}", response["error"]);
     } else {
-        println!("Response: {:?}", response["result"]);
+        println!("Response: \n {:#?}", response["result"]);
     }
 
     Ok(())
