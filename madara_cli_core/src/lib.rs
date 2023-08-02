@@ -45,6 +45,14 @@ pub enum Command {
         address: String,
     },
 
+    #[structopt(name = "get-class-hash-at")]
+    StarknetGetClassHashAt {
+        #[structopt(long)]
+        block_number: u32,
+        #[structopt(long)]
+        address: String,
+    },
+
     #[structopt(name = "call-contract")]
     StarknetCall {
         #[structopt(long)]
