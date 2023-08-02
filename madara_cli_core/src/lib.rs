@@ -12,7 +12,7 @@ pub enum Command {
         entry_point_selector: String,
         #[structopt(long)]
         calldata: Vec<String>,
-        #[structopt(default_value = "latest")]
+        #[structopt(long, default_value = "latest")]
         block_reference: String,
     },
 }

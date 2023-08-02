@@ -10,31 +10,16 @@ async fn main() -> Result<(), Error> {
     let opt = Opt::from_args();
 
     let rpc_url = opt.rpc_url;
+    let payload;
 
     match opt.command {
         Command::StarknetBlockNumber => {
-            let payload = json!({
+            payload = json!({
                 "jsonrpc": "2.0",
                 "method": "starknet_blockNumber",
                 "params": [],
                 "id": "1",
             });
-
-            let client = reqwest::Client::new();
-            let response: HashMap<String, Value> = client
-                .post(rpc_url)
-                .header("Content-Type", "application/json")
-                .json(&payload)
-                .send()
-                .await?
-                .json()
-                .await?;
-
-            if response.contains_key("error") {
-                println!("Error: {:?}", response["error"]);
-            } else {
-                println!("Response: {:?}", response["result"]);
-            }
         }
         Command::StarknetCall {
             contract_address,
@@ -42,9 +27,7 @@ async fn main() -> Result<(), Error> {
             calldata,
             block_reference,
         } => {
-            println!("contract_address: {:?}", contract_address);
-
-            let payload = json!({
+            payload = json!({
                 "jsonrpc": "2.0",
                 "method": "starknet_call",
                 "params": [{
@@ -56,23 +39,29 @@ async fn main() -> Result<(), Error> {
                 ],
                 "id": "1",
             });
-
-            let client = reqwest::Client::new();
-            let response: HashMap<String, Value> = client
-                .post(rpc_url)
-                .header("Content-Type", "application/json")
-                .json(&payload)
-                .send()
-                .await?
-                .json()
-                .await?;
-
-            if response.contains_key("error") {
-                println!("Error: {:?}", response["error"]);
-            } else {
-                println!("Response: {:?}", response["result"]);
-            }
         }
+    }
+
+    handle_rpc_request(&rpc_url, &payload).await?;
+
+    Ok(())
+}
+
+async fn handle_rpc_request(rpc_url: &str, payload: &Value) -> Result<(), Error> {
+    let client = reqwest::Client::new();
+    let response: HashMap<String, Value> = client
+        .post(rpc_url)
+        .header("Content-Type", "application/json")
+        .json(payload)
+        .send()
+        .await?
+        .json()
+        .await?;
+
+    if response.contains_key("error") {
+        println!("Error: {:?}", response["error"]);
+    } else {
+        println!("Response: {:?}", response["result"]);
     }
 
     Ok(())
