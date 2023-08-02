@@ -11,6 +11,12 @@ pub enum Command {
     #[structopt(name = "get-block-hash-and-number")]
     StarknetBlockHashAndNumber,
 
+    #[structopt(name = "get-block-txs-coount")]
+    StarknetGetBlockTransactionCount {
+        #[structopt(long, default_value = "latest")]
+        block_reference: String,
+    },
+
     #[structopt(name = "call-contract")]
     StarknetCall {
         #[structopt(long)]
