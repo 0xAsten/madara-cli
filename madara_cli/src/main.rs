@@ -175,6 +175,14 @@ async fn main() -> Result<(), Error> {
                 "id": "1",
             });
         }
+        Command::StarknetGetTransactionByHash { tx_hash } => {
+            payload = json!({
+                "jsonrpc": "2.0",
+                "method": "starknet_getTransactionByHash",
+                "params": [tx_hash],
+                "id": "1",
+            });
+        }
         Command::StarknetCall {
             contract_address,
             entry_point_selector,
