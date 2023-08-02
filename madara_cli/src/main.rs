@@ -98,6 +98,41 @@ async fn main() -> Result<(), Error> {
                 "id": "1",
             });
         }
+        Command::StarknetEstimateFee(params) => {
+            println!("{:#?}", params);
+            payload = json!({
+                "jsonrpc": "2.0",
+                "method": "starknet_estimateFee",
+                "params": {
+                    "request": {
+                        "type": params.request_type,
+                        "max_fee": params.max_fee,
+                        "version": params.version,
+                        "nonce": params.nonce,
+                        "signature": params.signature,
+                        "sender_address": params.sender_address,
+                        "calldata": params.calldata,
+                    },
+                    "block_id": params.block_id,
+                },
+                "id": "1",
+            });
+        }
+        Command::StarknetGetEvents(get_events) => {
+            payload = json!({
+                "jsonrpc": "2.0",
+                "method": "starknet_getEvents",
+                "params": {
+                    "filter": {
+                        "from_block": get_events.from_block,
+                        "to_block": get_events.to_block,
+                        "keys": [get_events.keys],
+                        "chunk_size": get_events.chunk_size,
+                    }
+                },
+                "id": "1",
+            });
+        }
         Command::StarknetCall {
             contract_address,
             entry_point_selector,
