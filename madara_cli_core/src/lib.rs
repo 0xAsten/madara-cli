@@ -152,6 +152,9 @@ pub enum Command {
         tx_hash: String,
     },
 
+    #[structopt(name = "get-pending-txs")]
+    StarknetPendingTransactions,
+
     #[structopt(name = "call-contract")]
     StarknetCall {
         #[structopt(long)]
