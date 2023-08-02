@@ -113,6 +113,12 @@ pub enum Command {
         address: String,
     },
 
+    #[structopt(name = "get-state-update")]
+    StarknetGetStateUpdate {
+        #[structopt(long, default_value = "latest")]
+        block_reference: String,
+    },
+
     #[structopt(name = "call-contract")]
     StarknetCall {
         #[structopt(long)]
