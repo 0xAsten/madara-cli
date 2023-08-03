@@ -31,7 +31,10 @@ Number(6219)
 ### Starknet Call
 
 ```
-./target/debug/madara_cli call-contract --contract-address 0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7 --entry-point-selector 0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e --calldata 0x0000000000000000000000000000000000000000000000000000000000000002
+./target/debug/madara_cli call-contract \
+--contract-address 0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7 \
+--entry-point-selector 0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e \
+--calldata 0x0000000000000000000000000000000000000000000000000000000000000002
 ```
 
 Response:
@@ -46,7 +49,10 @@ Array [
 ### Invoke Transaction
 
 ```
-./target/debug/madara_cli invoke-tx --signature 0x0,0x0 --sender-address 0x0000000000000000000000000000000000000000000000000000000000000001 --calldata 0x0000000000000000000000000000000000000000000000000000000000001111,0x36fa6de2810d05c3e1a0ebe23f60b9c2f4629bbead09e5a9704e1c5632630d5,0x0
+./target/debug/madara_cli invoke-tx \
+--signature 0x0,0x0 \
+--sender-address 0x0000000000000000000000000000000000000000000000000000000000000001 \
+--calldata 0x0000000000000000000000000000000000000000000000000000000000001111,0x36fa6de2810d05c3e1a0ebe23f60b9c2f4629bbead09e5a9704e1c5632630d5,0x0
 ```
 
 Response:
@@ -55,6 +61,76 @@ Response:
 Object {
     "transaction_hash": String("0x3024c929c1bec3a872441d8ad6a8e5b0c5b931d2bf75dc5dbad2b93c1c4dec0"),
 }
+```
+
+## Other commands --help
+
+- Get Chain ID:
+
+```
+madara-cli get-chainid
+```
+
+- Get Block Hash and Number:
+
+```
+madara-cli get-block-hash-and-number
+```
+
+- Get Block Transaction Count:
+
+```
+madara-cli get-block-txs-coount --block-reference <BLOCK_REFERENCE>
+```
+
+- Get Block with Transaction Hashes:
+
+```
+madara-cli get-block-with-tx-hashes --block-reference <BLOCK_REFERENCE>
+```
+
+- Get Block with Transactions:
+
+```
+madara-cli get-block-with-txs --block-reference <BLOCK_REFERENCE>
+```
+
+- Get Class:
+
+```
+madara-cli get-class --block-reference <BLOCK_REFERENCE> --class-hash <CLASS_HASH>
+```
+
+- Get Class at Address:
+
+```
+madara-cli get-class-at --block-reference <BLOCK_REFERENCE> --address <ADDRESS>
+```
+
+- Get Class Hash at Address:
+
+```
+madara-cli get-class-hash-at --block-number <BLOCK_NUMBER> --address <ADDRESS>
+```
+
+- Estimate Fee:
+
+```
+madara-cli get-estimate-fee --request-type <REQUEST_TYPE> --max-fee <MAX_FEE> --version <VERSION> --nonce <NONCE> --signature <SIGNATURE> --sender-address <SENDER_ADDRESS> --calldata <CALLDATA> --block-id <BLOCK_ID>
+```
+
+- Get Events:
+
+```
+madara-cli get-events --from-block <FROM_BLOCK> --to-block <TO_BLOCK> --keys <KEYS> --chunk-size <CHUNK_SIZE>
+```
+
+## Full List of Commands
+
+For a complete list of commands and detailed information on their usage, run:
+
+```
+./target/debug/madara_cli --help
 ```
 
 ## Contributing
