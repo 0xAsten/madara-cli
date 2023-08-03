@@ -22,16 +22,39 @@ cargo build
 ./target/debug/madara_cli get-blocknumber
 ```
 
+Response:
+
+```
+Number(6219)
+```
+
 ### Starknet Call
 
 ```
-./target/debug/madara_cli starknet-call --contract-address 0x49... --entry-point-selector 0x2e... --calldata 0x00... --block-reference latest
+./target/debug/madara_cli call-contract --contract-address 0x49d36570d4e46f48e99674bd3fcc84644ddd6b96f7c741b1562b82f9e004dc7 --entry-point-selector 0x2e4263afad30923c891518314c3c95dbe830a16874e8abc5777a9a20b54c76e --calldata 0x0000000000000000000000000000000000000000000000000000000000000002
+```
+
+Response:
+
+```
+Array [
+    String("0xffffffffffffffffffffffffffffffff"),
+    String("0x0"),
+]
 ```
 
 ### Invoke Transaction
 
 ```
-./target/debug/madara_cli starknet-add-invoke-transaction --max-fee 0xDEADB --version 0x1 --nonce 0x0 --signature 0x0,0x0 --sender-address 0x00... --calldata 0x00...,0x36...,0x0
+./target/debug/madara_cli invoke-tx --signature 0x0,0x0 --sender-address 0x0000000000000000000000000000000000000000000000000000000000000001 --calldata 0x0000000000000000000000000000000000000000000000000000000000001111,0x36fa6de2810d05c3e1a0ebe23f60b9c2f4629bbead09e5a9704e1c5632630d5,0x0
+```
+
+Response:
+
+```
+Object {
+    "transaction_hash": String("0x3024c929c1bec3a872441d8ad6a8e5b0c5b931d2bf75dc5dbad2b93c1c4dec0"),
+}
 ```
 
 ## Contributing

@@ -47,7 +47,7 @@ pub struct GetEvents {
 
 #[derive(StructOpt, Debug)]
 pub struct AddInvokeTransactionOpts {
-    #[structopt(long)]
+    #[structopt(long, default_value = "0xDEADB")]
     pub max_fee: String,
 
     #[structopt(long, default_value = "0x1")]
