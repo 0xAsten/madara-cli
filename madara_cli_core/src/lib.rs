@@ -1,5 +1,7 @@
 use structopt::StructOpt;
 
+mod singer;
+
 #[derive(Debug, StructOpt)]
 pub struct StarknetEstimateFee {
     #[structopt(short, long, default_value = "INVOKE")]
