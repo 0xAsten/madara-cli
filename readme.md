@@ -4,7 +4,7 @@
 
 Before using the Madara CLI tool, you need to ensure that a Madara node is running. The instructions to run the Madara node are specific to your particular setup, so please refer to the relevant Madara documentation to get started.
 
-Once the Madara node is up and running, you can interact with it using the Madara CLI tool. By default, the CLI tool will attempt to connect to a Madara node running at http://0.0.0.0:9944. If your node is running at this address, you can omit the --rpc-url argument. Otherwise, you will need to provide the correct URL using the --rpc-url option.
+Once the Madara node is up and running, you can interact with it using the Madara CLI tool. By default, the CLI tool will attempt to connect to a Madara node running at http://localhost:9944. If your node is running at this address, you can omit the --rpc-url argument. Otherwise, you will need to provide the correct URL using the --rpc-url option.
 
 ## Building the Project
 

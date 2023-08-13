@@ -1,6 +1,9 @@
 use structopt::StructOpt;
 
-mod singer;
+// mod singer;
+mod wrapper;
+
+mod interact_with_contract;
 
 #[derive(Debug, StructOpt)]
 pub struct StarknetEstimateFee {
@@ -203,7 +206,7 @@ pub enum Command {
 #[derive(Debug, StructOpt)]
 #[structopt(name = "madara_cli", about = "CLI for Madara node.")]
 pub struct Opt {
-    #[structopt(long, default_value = "http://0.0.0.0:9944")]
+    #[structopt(long, default_value = "http://localhost:9944")]
     pub rpc_url: String,
 
     #[structopt(subcommand)]
