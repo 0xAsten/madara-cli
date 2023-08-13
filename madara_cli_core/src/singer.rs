@@ -37,7 +37,7 @@ pub fn compute_hash_on_elements(vec: &Vec<String>) -> FieldElement {
 mod tests {
     use super::*;
 
-    #[tokio::test] // Use tokio's testing attribute for async tests.
+    #[tokio::test]
     async fn test_sign_message() {
         let private_key = "0x00c1cf1490de1352865301bb8705143f3ef938f97fdf892f1090dcb5ac7bcd1d";
         let call_data = vec![
